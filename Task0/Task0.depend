@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1645508538 source:d:\projects\c++\task0\box.cpp
+	<iostream>
+	"box.h"
+
+1645508085 d:\projects\c++\task0\box.h
+	<iostream>
+
+1645508595 source:d:\projects\c++\task0\boxclass.cpp
+	<iostream>
+	"boxClass.h"
+
+1645509100 d:\projects\c++\task0\boxclass.h
+	<iostream>
+
+1645508587 source:d:\projects\c++\task0\main.cpp
+	<iostream>
+	"boxClass.h"
+
