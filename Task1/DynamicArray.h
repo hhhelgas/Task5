@@ -15,7 +15,7 @@ class DynamicArray
         DynamicArray(DynamicArray&&);
         virtual ~DynamicArray();
         int getLength() const;
-        int& operator[](int i) const{
+        int& operator[](int i) const {
             return arr[i];
         }
         void resize(int);
@@ -23,6 +23,7 @@ class DynamicArray
             if (this != &d_arr)
             {
                 delete[] arr;
+
                 arr = d_arr.arr;
                 length = d_arr.length;
 
@@ -70,14 +71,18 @@ class DynamicArray
         friend bool operator>= (const DynamicArray &arr1, const DynamicArray &arr2){
             return (arr1 > arr2 || arr1 == arr2);
         }
-        friend DynamicArray& operator+ (const DynamicArray& arr1, const DynamicArray& arr2){
+        friend DynamicArray operator+ (const DynamicArray& arr1, const DynamicArray& arr2){
             DynamicArray result(arr1.getLength() + arr2.getLength());
+            int j = 0;
             for(int i = 0; i < arr1.getLength(); i++){
-                result[i] = arr1[i];
+                result[j] = arr1[j];
+                j++;
             }
             for(int i = 0; i < arr2.getLength(); i++){
-                result[i] = arr2[i];
+                result[j] = arr2[i];
+                j++;
             }
+            std::cout << std::endl;
             return result;
         }
         friend std::ostream& operator<< (std::ostream& out, const DynamicArray& d_arr){
