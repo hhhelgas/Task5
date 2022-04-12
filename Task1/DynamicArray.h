@@ -32,6 +32,11 @@ class DynamicArray
             }
             return *this;
         }
+        DynamicArray operator=(DynamicArray& d_arr){
+            arr = d_arr.arr;
+            length = d_arr.length;
+            return *this;
+        }
         friend bool operator== (const DynamicArray &arr1, const DynamicArray &arr2){
             if(arr1.getLength() == arr2.getLength()){
                 for(int i = 0; i < arr1.getLength(); i++){
@@ -86,9 +91,11 @@ class DynamicArray
             return result;
         }
         friend std::ostream& operator<< (std::ostream& out, const DynamicArray& d_arr){
-            for(int i = 0; i < d_arr.getLength(); i++){
+            out << "{";
+            for(int i = 0; i < d_arr.getLength()-1; i++){
                 out << d_arr[i] << " ";
             }
+            out << d_arr[d_arr.getLength()-1] << "}";
             return out;
         }
         friend std::istream& operator>> (std::istream& in, DynamicArray& d_arr){

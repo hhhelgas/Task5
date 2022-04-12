@@ -19,6 +19,15 @@ int main()
     DynamicArray d_arr_sum(d_arr + d_arr2);
     cout << d_arr_sum << endl;
 
+    DynamicArray d_arr3(6,2);
+
+    cout << d_arr << " > " << d_arr3 << ": " << (d_arr > d_arr3) << endl;
+
+    DynamicArray d_arr4(1);
+
+    d_arr4 = d_arr;
+
+    cout << d_arr << " == " << d_arr4 << ": " << (d_arr == d_arr4) << endl;
 
     return 0;
 }

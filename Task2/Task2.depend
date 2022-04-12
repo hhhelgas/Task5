@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1649311348 source:d:\projects\c++\cprograms\task2\main.cpp
+	<iostream>
+	"queue.h"
+	"iterator.h"
+
+1649310797 d:\projects\c++\cprograms\task2\queue.h
+
+1649310894 source:d:\projects\c++\cprograms\task2\queue.cpp
+	"queue.h"
+	<iostream>
+
+1649311264 source:d:\projects\c++\cprograms\task2\iterator.cpp
+	"iterator.h"
+	"queue.h"
+
+1649311243 d:\projects\c++\cprograms\task2\iterator.h
+	"queue.h"
+
