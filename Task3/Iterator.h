@@ -9,7 +9,7 @@ struct Node{
 class Iterator{
 public:
     virtual void start(){}
-    virtual Node& get(){}
+    virtual Node* get(){}
     virtual void next(){}
     virtual bool finish(){}
 };

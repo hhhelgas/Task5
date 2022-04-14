@@ -13,6 +13,7 @@ int main()
         //cout << "delete: " << queue.pop() << endl;
         cout << "length: " << queue.size() << endl;
         queue.add(4);
+        queue.add(4);
         cout << "begin elem: " << queue.get() << endl;
 
         cout << "start iterator\n";
