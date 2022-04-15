@@ -5,19 +5,54 @@
 
 class L2List: public List{
 public:
+    class L2Iterator: public Iterator{
+    private:
+        Node* p;
+        Node* buf;
+        int index;
+        int length;
+    public:
+        L2Iterator(L2List& _list){
+            buf = _list.getBuffer();
+            length = _list.getLength();
+        }
+        void start() override{
+            p = buf;
+            index = -1;
+        }
+        void next() override{
+            p = p -> next;
+            index++;
+        }
+        Node* get() override{
+            return p;
+        }
+        bool finish() override{
+            return index >= length;
+        }
+    };
     L2List();
     L2List(const L2List&);
-    void add(Iterator it, int v) override {
+
+    void add(L2Iterator it, int v) {
         Node* p = new Node;
-        Node* t = it.get();
-        t -> next -> prev = p;
-        p -> next = t -> next;
-        p -> prev = t;
-        p -> value = v;
-        t -> next = p;
+        if(length == 0){
+            p -> next = buffer;
+            p -> prev = buffer;
+            p -> value = v;
+            buffer -> next = p;
+            buffer -> prev = p;
+        }else{
+            Node* t = it.get();
+            t -> next -> prev = p;
+            p->next = t->next;
+            p->prev = t;
+            p->value = v;
+            t->next = p;
+        }
         length++;
     }
-    Node* getBuffer() override{
+    Node* getBuffer(){
         return buffer;
     }
 
@@ -45,10 +80,10 @@ public:
         }
         return it;
     }
-    void empty() override{
+    void empty() override {
         Node* p = buffer;
         Node* t = NULL;
-        while(p -> next != nullptr){
+        while(p -> next != buffer){
             p = p -> next;
             delete t;
             t = p;
@@ -59,7 +94,6 @@ public:
     bool isEmpty() override {return length == 0;}
     int getLength() override {return length;}
     Iterator& begin() override{
-        std::cout << "begin\n";
         L2Iterator it(*this);
         it.start();
         it.next();
@@ -70,27 +104,5 @@ public:
         length = _list.length;
         return *this;
     }
-    class L2Iterator: public Iterator{
-    private:
-        List list;
-        Node* p;
-        int index;
-    public:
-        L2Iterator(List& _list):list(_list){std::cout << "constructor iterator\n";}
-        void start() override{
-            p = list.getBuffer();
-            index = -1;
-        }
-        void next() override{
-            p = p -> next;
-            std::cout << index << " next\n";
-            index++;
-        }
-        Node* get() override{
-            return p;
-        }
-        bool finish() override{
-            return index >= list.getLength();
-        }
-    };
+
 };
