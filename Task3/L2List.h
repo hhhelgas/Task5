@@ -33,7 +33,7 @@ public:
     };
     L2List();
     L2List(const L2List&);
-
+    ~L2List();
     void add(L2Iterator it, int v) {
         Node* p = new Node;
         if(length == 0){
@@ -56,14 +56,15 @@ public:
         return buffer;
     }
 
-    void remove(Iterator it) override {
+    void remove(L2Iterator it) {
         Node* p = it.get();
         p -> prev -> next = p -> next;
         p -> next -> prev = p -> prev;
         delete p;
         length--;
     }
-    Iterator indexOf(int v) override{
+
+    Iterator indexOf(int v){
         Node* p = buffer -> next;
         int i = -1;
         while(p != buffer -> prev){
@@ -80,6 +81,7 @@ public:
         }
         return it;
     }
+
     void empty() override {
         Node* p = buffer;
         Node* t = NULL;
@@ -93,10 +95,14 @@ public:
     }
     bool isEmpty() override {return length == 0;}
     int getLength() override {return length;}
-    Iterator& begin() override{
+    L2Iterator& begin(){
+        std::cout << "\n" << "c" << "\n";
         L2Iterator it(*this);
+        std::cout << "\n" << "c" << "\n";
         it.start();
+        std::cout << "\n" << "c" << "\n";
         it.next();
+        std::cout << "\n" << "c" << "\n";
         return it;
     }
     L2List operator=(L2List& _list){

@@ -3,8 +3,8 @@
 
 L2List::L2List(){
     buffer = new Node;
-    buffer -> next = nullptr;
-    buffer -> prev = nullptr;
+    buffer -> next = buffer;
+    buffer -> prev = buffer;
     buffer -> value = -2;
     length = 0;
 }
@@ -26,6 +26,13 @@ L2List::L2List(const L2List& _list){
     length = _list.length;
 }
 
+L2List::~L2List(){
+    if(length != 0){
+        empty();
+    }
+    delete buffer;
+    std::cout << "Dektructor";
+}
 
 
 

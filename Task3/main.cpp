@@ -29,7 +29,20 @@ int main()
     L2List l;
     cout<< "a\n";
     L2List::L2Iterator it(l);
-    cout<< "a\n";
+    it.start();
+    l.add(it, 3);
+    l.add(it, 2);
+    l.add(it, 1);
+    L2List::L2Iterator it1(l);
+    it1.start();
+    it1.next();
+    cout << it1.get() -> value << "\n";
+    it1.next();
+    cout << it1.get() -> value << "\n";
+    l.remove(it1);
+    L2List::L2Iterator it2 = l.begin();
+    std::cout << "\n" << "c" << "\n";
+    /*cout<< "a\n";
     cout << l.getBuffer() -> value << "\n";
     it.start();
     cout<< "a\n";
@@ -47,15 +60,12 @@ int main()
     it.next();
     cout<<it.get()->value;
     cout << "a";
-    l.empty();
     L2List::L2Iterator it1(l);
-    it.start();
-    l.add(it1, 3);
     it1.start();
     it1.next();
     cout << "\n aaaaaa" << it1.get() -> value;
     it1.next();
 
-    cout << "\n aaaaaa" << it1.get() -> value;
+    cout << "\n aaaaaa" << it1.get() -> value;*/
     return 0;
 }
