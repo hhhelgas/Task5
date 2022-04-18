@@ -13,5 +13,5 @@ public:
     virtual void empty(){}
     virtual bool isEmpty(){}
     virtual int getLength(){}
-    virtual Iterator& begin(){}
+    virtual Iterator begin(){}
 };

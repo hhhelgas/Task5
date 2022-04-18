@@ -6,15 +6,30 @@
 class L2List: public List{
 public:
     class L2Iterator: public Iterator{
-    private:
-        Node* p;
-        Node* buf;
-        int index;
-        int length;
     public:
         L2Iterator(L2List& _list){
             buf = _list.getBuffer();
             length = _list.getLength();
+        }
+        L2Iterator(const L2Iterator& it) {
+            index = it.index;
+            p = it.p;
+            buf = it.buf;
+            length = it.length;
+        }
+        L2Iterator& operator=(L2Iterator&& it){
+            index = it.index;
+            p = it.p;
+            buf = it.buf;
+            length = it.length;
+            return *this;
+        }
+        L2Iterator operator=(L2Iterator& it){
+            index = it.index;
+            p = it.p;
+            buf = it.buf;
+            length = it.length;
+            return *this;
         }
         void start() override{
             p = buf;
@@ -66,7 +81,7 @@ public:
 
     Iterator indexOf(int v){
         Node* p = buffer -> next;
-        int i = -1;
+        int i = 0;
         while(p != buffer -> prev){
             i++;
             if(p -> value == v){
@@ -79,6 +94,7 @@ public:
         for(int j = 0; j <= i; j++){
             it.next();
         }
+        std::cout << "\n In indexOf: " << it.get() -> value << "\n";
         return it;
     }
 
@@ -95,13 +111,15 @@ public:
     }
     bool isEmpty() override {return length == 0;}
     int getLength() override {return length;}
-    L2Iterator& begin(){
+    Iterator begin(){
         std::cout << "\n" << "c" << "\n";
         L2Iterator it(*this);
         std::cout << "\n" << "c" << "\n";
         it.start();
+        std::cout << it.get() -> value << "\n";
         std::cout << "\n" << "c" << "\n";
         it.next();
+        std::cout << it.get() -> value << "\n";
         std::cout << "\n" << "c" << "\n";
         return it;
     }

@@ -27,7 +27,6 @@ int main()
     cout << list.getLength();
     return 0;*/
     L2List l;
-    cout<< "a\n";
     L2List::L2Iterator it(l);
     it.start();
     l.add(it, 3);
@@ -35,13 +34,19 @@ int main()
     l.add(it, 1);
     L2List::L2Iterator it1(l);
     it1.start();
-    it1.next();
-    cout << it1.get() -> value << "\n";
-    it1.next();
-    cout << it1.get() -> value << "\n";
-    l.remove(it1);
-    L2List::L2Iterator it2 = l.begin();
-    std::cout << "\n" << "c" << "\n";
+    while(!it1.finish()){
+        cout << it1.get() -> value << " ";
+        it1.next();
+    }
+    Iterator it3 = l.begin();
+    cout << it3.get()->next->value << "\n";
+    it1.start();
+    while(!it1.finish()) {
+        cout << it1.get() -> value << " ";
+        it1.next();
+    }
+    cout << "\n" << "c" << "\n";
+    cout << "the end\n";
     /*cout<< "a\n";
     cout << l.getBuffer() -> value << "\n";
     it.start();
