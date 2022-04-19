@@ -79,7 +79,7 @@ public:
         length--;
     }
 
-    Iterator indexOf(int v){
+    Iterator* indexOf(int v){
         Node* p = buffer -> next;
         int i = 0;
         while(p != buffer -> prev){
@@ -89,7 +89,7 @@ public:
             }
             p = p -> next;
         }
-        L2Iterator it(*this);
+        Iterator* it = new L2Iterator(*this);
         it.start();
         for(int j = 0; j <= i; j++){
             it.next();
@@ -111,9 +111,9 @@ public:
     }
     bool isEmpty() override {return length == 0;}
     int getLength() override {return length;}
-    Iterator begin(){
+    Iterator* begin(){
         std::cout << "\n" << "c" << "\n";
-        L2Iterator it(*this);
+        Iterator* it = new L2Iterator(*this);
         std::cout << "\n" << "c" << "\n";
         it.start();
         std::cout << it.get() -> value << "\n";
@@ -128,5 +128,4 @@ public:
         length = _list.length;
         return *this;
     }
-
 };

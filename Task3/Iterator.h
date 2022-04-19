@@ -13,8 +13,8 @@ protected:
     int index;
     int length;
 public:
-    virtual void start(){}
-    virtual Node* get(){}
-    virtual void next(){}
-    virtual bool finish(){}
+    virtual void start() = 0;
+    virtual Node* get() = 0;
+    virtual void next() = 0;
+    virtual bool finish() = 0;
 };
