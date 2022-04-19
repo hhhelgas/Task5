@@ -27,8 +27,8 @@ int main()
     cout << list.getLength();
     return 0;*/
     L2List l;
-    L2List::L2Iterator it(l);
-    it.start();
+    Iterator* it = new L2List::L2Iterator(l);
+    it->start();
     l.add(it, 3);
     l.add(it, 2);
     l.add(it, 1);
@@ -38,8 +38,10 @@ int main()
         cout << it1.get() -> value << " ";
         it1.next();
     }
-    Iterator it3 = l.begin();
-    cout << it3.get()->next->value << "\n";
+    Iterator* it3 = l.begin();
+    cout << "\n" << it3->get()->value << "\n";
+    it3 = l.indexOf(3);
+    cout << "\n" << it3->get()->value << "\n";
     it1.start();
     while(!it1.finish()) {
         cout << it1.get() -> value << " ";

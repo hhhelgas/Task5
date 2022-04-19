@@ -49,7 +49,7 @@ public:
     L2List();
     L2List(const L2List&);
     ~L2List();
-    void add(L2Iterator it, int v) {
+    void add(Iterator* it, int v) override{
         Node* p = new Node;
         if(length == 0){
             p -> next = buffer;
@@ -58,7 +58,7 @@ public:
             buffer -> next = p;
             buffer -> prev = p;
         }else{
-            Node* t = it.get();
+            Node* t = it -> get();
             t -> next -> prev = p;
             p->next = t->next;
             p->prev = t;
@@ -67,19 +67,19 @@ public:
         }
         length++;
     }
-    Node* getBuffer(){
+    Node* getBuffer() override{
         return buffer;
     }
 
-    void remove(L2Iterator it) {
-        Node* p = it.get();
+    void remove(Iterator* it) override{
+        Node* p = it->get();
         p -> prev -> next = p -> next;
         p -> next -> prev = p -> prev;
         delete p;
         length--;
     }
 
-    Iterator* indexOf(int v){
+    Iterator* indexOf(int v) override{
         Node* p = buffer -> next;
         int i = 0;
         while(p != buffer -> prev){
@@ -90,11 +90,11 @@ public:
             p = p -> next;
         }
         Iterator* it = new L2Iterator(*this);
-        it.start();
+        it->start();
         for(int j = 0; j <= i; j++){
-            it.next();
+            it->next();
         }
-        std::cout << "\n In indexOf: " << it.get() -> value << "\n";
+        std::cout << "\n In indexOf: " << it->get() -> value << "\n";
         return it;
     }
 
@@ -111,16 +111,11 @@ public:
     }
     bool isEmpty() override {return length == 0;}
     int getLength() override {return length;}
-    Iterator* begin(){
-        std::cout << "\n" << "c" << "\n";
+    Iterator* begin() override{
         Iterator* it = new L2Iterator(*this);
-        std::cout << "\n" << "c" << "\n";
-        it.start();
-        std::cout << it.get() -> value << "\n";
-        std::cout << "\n" << "c" << "\n";
-        it.next();
-        std::cout << it.get() -> value << "\n";
-        std::cout << "\n" << "c" << "\n";
+        it->start();
+        std::cout << it->get() -> value << "\n";
+        it->next();
         return it;
     }
     L2List operator=(L2List& _list){
