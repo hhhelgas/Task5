@@ -7,11 +7,6 @@ struct Node{
 };
 
 class Iterator{
-protected:
-    Node* p;
-    Node* buf;
-    int index;
-    int length;
 public:
     virtual void start() = 0;
     virtual Node* get() = 0;

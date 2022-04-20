@@ -1,22 +1,22 @@
 # depslib dependency file v1.0
-1650347766 source:d:\projects\c++\cprograms\task3\main.cpp
+1650423748 source:d:\projects\c++\cprograms\task3\main.cpp
 	<iostream>
 	"L2List.h"
 	"Iterator.h"
 
-1650080759 source:d:\projects\c++\cprograms\task3\l2list.cpp
+1650424328 source:d:\projects\c++\cprograms\task3\l2list.cpp
 	"L2List.h"
 	"iostream"
 
-1650347647 d:\projects\c++\cprograms\task3\l2list.h
+1650424777 d:\projects\c++\cprograms\task3\l2list.h
 	"List.h"
 	"Iterator.h"
 	<iostream>
 
-1650347082 d:\projects\c++\cprograms\task3\list.h
+1650422967 d:\projects\c++\cprograms\task3\list.h
 	"Iterator.h"
 
-1650346835 d:\projects\c++\cprograms\task3\iterator.h
+1650422988 d:\projects\c++\cprograms\task3\iterator.h
 
 1649649977 d:\projects\c++\cprograms\task3\l2iterator.h
 

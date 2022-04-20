@@ -2,9 +2,6 @@
 #include "Iterator.h"
 
 class List{
-protected:
-    Node* buffer;
-    int length;
 public:
     virtual Node* getBuffer() = 0;
     virtual void add(Iterator* it, int v) = 0;

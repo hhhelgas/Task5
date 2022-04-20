@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1649219338 source:d:\projects\c++\cprograms\task1\main.cpp
+1650425879 source:d:\projects\c++\cprograms\task1\main.cpp
 	<iostream>
 	"DynamicArray.h"
 

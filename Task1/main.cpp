@@ -23,9 +23,9 @@ int main()
 
     cout << d_arr << " > " << d_arr3 << ": " << (d_arr > d_arr3) << endl;
 
-    DynamicArray d_arr4(1);
+    DynamicArray d_arr4 = DynamicArray(d_arr3);
 
-    d_arr4 = d_arr;
+    //d_arr4 = d_arr;
 
     cout << d_arr << " == " << d_arr4 << ": " << (d_arr == d_arr4) << endl;
 

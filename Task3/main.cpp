@@ -5,74 +5,66 @@ using namespace std;
 
 int main()
 {
-    /*L2List list;
-    cout << list.getLength();
-    L2List::L2Iterator it(list);
-    it.start();
-    cout << list.getBuffer() -> value;
-    cout << "a";
-    list.add(it, 1);
-    cout << "b";
-    it.start();
-    it.next();
-    list.add(it, 2);
-    cout << "c";
-    it.start();
-    it.next();
-    while(!it.finish()){
-        cout <<"\n                                    a: " <<  it.get() -> value << "                       a\n";
-        it.next();
-    }
-    //cout << list.begin().get() -> value;
-    cout << list.getLength();
-    return 0;*/
     L2List l;
     Iterator* it = new L2List::L2Iterator(l);
     it->start();
     l.add(it, 3);
     l.add(it, 2);
     l.add(it, 1);
-    L2List::L2Iterator it1(l);
-    it1.start();
-    while(!it1.finish()){
-        cout << it1.get() -> value << " ";
-        it1.next();
-    }
-    Iterator* it3 = l.begin();
-    cout << "\n" << it3->get()->value << "\n";
-    it3 = l.indexOf(3);
-    cout << "\n" << it3->get()->value << "\n";
-    it1.start();
-    while(!it1.finish()) {
-        cout << it1.get() -> value << " ";
-        it1.next();
-    }
-    cout << "\n" << "c" << "\n";
-    cout << "the end\n";
-    /*cout<< "a\n";
-    cout << l.getBuffer() -> value << "\n";
-    it.start();
-    cout<< "a\n";
-    cout << "it.get data: " << it.get() -> value << endl;
-    l.add(it,1);
-    cout << "it.get data: " << it.get() -> value << endl;
-    cout<< "a\n";
-    it.start();
-    cout << it.get() -> value;
-    l.add(it,2);
-    cout << "it.get data: " << it.get() -> value << endl;
-    it.start();
-    it.next();
-    cout<<it.get()->value;
-    it.next();
-    cout<<it.get()->value;
-    cout << "a";
-    L2List::L2Iterator it1(l);
-    it1.start();
-    it1.next();
-    cout << "\n aaaaaa" << it1.get() -> value;
-    it1.next();
 
-    cout << "\n aaaaaa" << it1.get() -> value;*/
+    it = new L2List::L2Iterator(l);
+    it -> start();
+
+    while(!it -> finish()){
+
+        it -> next();
+        cout << it -> get() -> value << " ";
+    }
+
+    it = l.begin();
+    cout << "\n" << it -> get()->value << "\n";
+
+
+    it = l.indexOf(1);
+    l.remove(it);
+
+
+    it = new L2List::L2Iterator(l);
+    it -> start();
+    while(!it -> finish()) {
+        it -> next();
+        cout << it -> get() -> value << " ";
+    }
+    cout << endl;
+
+    L2List n_list(l);
+    n_list.add(n_list.begin(), 5);
+
+    it = new L2List::L2Iterator(n_list);
+    it -> start();
+    while (!it -> finish()){
+        it -> next();
+        cout << it -> get() -> value << " ";
+    }
+    cout << endl;
+
+    it = new L2List::L2Iterator(l);
+    it -> start();
+    while (!it -> finish()){
+        it -> next();
+        cout << it -> get() -> value << " ";
+    }
+    cout << endl;
+
+    n_list = l;
+
+    it = new L2List::L2Iterator(n_list);
+    it -> start();
+    while (!it -> finish()){
+        it -> next();
+        cout << it -> get() -> value << " ";
+    }
+    cout << endl;
+
     return 0;
 }

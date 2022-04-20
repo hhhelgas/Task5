@@ -4,32 +4,20 @@
 #include <iostream>
 
 class L2List: public List{
+private:
+    Node* buffer;
+    int length;
 public:
     class L2Iterator: public Iterator{
+    private:
+        Node* p;
+        Node* buf;
+        int index;
+        int length;
     public:
         L2Iterator(L2List& _list){
             buf = _list.getBuffer();
             length = _list.getLength();
-        }
-        L2Iterator(const L2Iterator& it) {
-            index = it.index;
-            p = it.p;
-            buf = it.buf;
-            length = it.length;
-        }
-        L2Iterator& operator=(L2Iterator&& it){
-            index = it.index;
-            p = it.p;
-            buf = it.buf;
-            length = it.length;
-            return *this;
-        }
-        L2Iterator operator=(L2Iterator& it){
-            index = it.index;
-            p = it.p;
-            buf = it.buf;
-            length = it.length;
-            return *this;
         }
         void start() override{
             p = buf;
@@ -43,11 +31,12 @@ public:
             return p;
         }
         bool finish() override{
-            return index >= length;
+            return index >= length - 1;
         }
     };
     L2List();
     L2List(const L2List&);
+    L2List(L2List&&);
     ~L2List();
     void add(Iterator* it, int v) override{
         Node* p = new Node;
@@ -73,8 +62,8 @@ public:
 
     void remove(Iterator* it) override{
         Node* p = it->get();
-        p -> prev -> next = p -> next;
         p -> next -> prev = p -> prev;
+        p -> prev -> next = p -> next;
         delete p;
         length--;
     }
@@ -82,7 +71,7 @@ public:
     Iterator* indexOf(int v) override{
         Node* p = buffer -> next;
         int i = 0;
-        while(p != buffer -> prev){
+        while(p != buffer){
             i++;
             if(p -> value == v){
                 break;
@@ -91,10 +80,9 @@ public:
         }
         Iterator* it = new L2Iterator(*this);
         it->start();
-        for(int j = 0; j <= i; j++){
+        for(int j = 0; j < i; j++){
             it->next();
         }
-        std::cout << "\n In indexOf: " << it->get() -> value << "\n";
         return it;
     }
 
@@ -114,7 +102,6 @@ public:
     Iterator* begin() override{
         Iterator* it = new L2Iterator(*this);
         it->start();
-        std::cout << it->get() -> value << "\n";
         it->next();
         return it;
     }
