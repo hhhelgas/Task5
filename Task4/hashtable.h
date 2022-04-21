@@ -1,15 +1,34 @@
+#pragma once
+
 struct Node{
     int key;
     int value;
     Node* next;
-}
+};
 
-class Hashtable{
-
+class HashTable{
+private:
+    Node* arr;
+    int buffer;
+    int size;
+    int hashFunc(int key) {
+        return key % buffer;
+    }
 public:
-    virtual void add(){}
-    virtual void remove(){}
-    virtual int indexOf(){}
-    virtual void empty(){}
-    virtual bool isEmpty(){}
+    HashTable();
+    HashTable(const HashTable&);
+    HashTable(HashTable&&);
+    ~HashTable();
+    HashTable& operator=(const HashTable& hashTable)
+    {
+        if(this != &hashTable){
+
+        }
+        return *this;
+    }
+    void add(int, int);
+    void remove(int);
+    Node* indexOf(int);
+    void empty();
+    bool isEmpty();
 };
