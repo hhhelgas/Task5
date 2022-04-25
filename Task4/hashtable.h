@@ -31,4 +31,7 @@ public:
     Node* indexOf(int);
     void empty();
     bool isEmpty();
+    Node* getArr();
+    int getLength();
+    int getBuffer();
 };

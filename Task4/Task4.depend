@@ -1,4 +1,21 @@
 # depslib dependency file v1.0
-1650528892 source:d:\projects\c++\cprograms\task4\main.cpp
+1650856360 source:d:\projects\c++\cprograms\task4\main.cpp
 	<iostream>
+	"hashtable.h"
+	"iterator.h"
+
+1650855401 source:d:\projects\c++\cprograms\task4\hashtable.cpp
+	"hashtable.h"
+	<iostream>
+
+1650855413 d:\projects\c++\cprograms\task4\hashtable.h
+
+1650860597 source:d:\projects\c++\cprograms\task4\iterator.cpp
+	"iterator.h"
+	"hashtable.h"
+	<iostream>
+
+1650860074 d:\projects\c++\cprograms\task4\iterator.h
+	<iostream>
+	"hashtable.h"
 

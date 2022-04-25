@@ -23,15 +23,20 @@ HashTable::HashTable(const HashTable& hashTable){
     }
 }
 
-HashTable::HashTable(const HashTable& hashTable){
-    Node* p;
+HashTable::HashTable(HashTable&& hashTable){
+    /*Node* p;
     for(int i = 0; i < buffer; i++){
         p = arr[buffer].next;
         while(p != nullptr){
             add(p -> key, p -> value);
             p = p -> next;
         }
-    }
+    }*/
+}
+
+HashTable::~HashTable() {
+    empty();
+    delete[] arr;
 }
 
 void HashTable::add(int key, int value) {
@@ -73,6 +78,7 @@ Node* HashTable::indexOf(int key) {
     }
     if(isFind)
         return p;
+    return nullptr;
 }
 
 void HashTable::empty(){
@@ -88,8 +94,21 @@ void HashTable::empty(){
             }
         }
     }
+    size = 0;
 }
 
 bool HashTable::isEmpty() {
     return size == 0;
+}
+
+Node* HashTable::getArr(){
+    return arr;
+}
+
+int HashTable::getLength(){
+    return size;
+}
+
+int HashTable::getBuffer(){
+    return buffer;
 }
