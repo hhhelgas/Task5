@@ -78,12 +78,15 @@ public:
             }
             p = p -> next;
         }
-        Iterator* it = new L2Iterator(*this);
-        it->start();
-        for(int j = 0; j < i; j++){
-            it->next();
+        if(p != buffer){
+            Iterator* it = new L2Iterator(*this);
+            it->start();
+            for(int j = 0; j < i; j++){
+                it->next();
+            }
+            return it;
         }
-        return it;
+        return nullptr;
     }
 
     void empty() override {
@@ -106,8 +109,11 @@ public:
         return it;
     }
     L2List operator=(L2List& _list){
-        buffer = _list.buffer;
-        length = _list.length;
+        if(this != &_list){
+            empty();
+            buffer = _list.buffer;
+            length = _list.length;
+        }
         return *this;
     }
 };

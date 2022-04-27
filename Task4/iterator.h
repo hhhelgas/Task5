@@ -7,10 +7,8 @@ private:
     int index;
     int length;
     int buffer;
-    int status;
-    bool isStatus = 0;
-    Node* arr;
     Node* elem;
+    Node* arr;
 public:
     Iterator(HashTable&);
     void start();

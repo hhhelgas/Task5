@@ -1,5 +1,5 @@
 #pragma once
-
+#include <iostream>
 struct Node{
     int key;
     int value;
@@ -19,10 +19,22 @@ public:
     HashTable(const HashTable&);
     HashTable(HashTable&&);
     ~HashTable();
-    HashTable& operator=(const HashTable& hashTable)
+    HashTable& operator=(HashTable& hashTable)
     {
         if(this != &hashTable){
-
+            HashTable local(hashTable);
+            std::swap(arr, local.arr);
+            std::swap(buffer, local.buffer);
+            std::swap(size, local.size);
+        }
+        return *this;
+    }
+    HashTable& operator=(HashTable&& hashTable)
+    {
+        if (this != &hashTable) {
+            std::swap(arr, hashTable.arr);
+            std::swap(buffer, hashTable.buffer);
+            std::swap(size, hashTable.size);
         }
         return *this;
     }

@@ -20,7 +20,6 @@ L2List::L2List(const L2List& _list){
         t -> prev = tl;
         t -> value = p -> value;
         tl = tl -> next;
-        //std::cout << "";
         p = p -> next;
     }
     buffer -> prev = tl;

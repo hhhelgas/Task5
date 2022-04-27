@@ -27,7 +27,16 @@ int main()
     }
     cout << "\n";
 
+    HashTable table_new = HashTable(table);
+    //table_new = table;
 
+    Iterator it1(table_new);
+    it1.start();
+    cout << it1.getValue() << " ";
+    while(!it1.finish()){
+        it1.next();
+        cout << it1.getValue() << " ";
+    }
 
     cout << "Is empty: " << table.isEmpty() << endl;
     table.empty();

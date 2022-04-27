@@ -25,8 +25,13 @@ int main()
     cout << "\n" << it -> get()->value << "\n";
 
 
-    it = l.indexOf(1);
-    l.remove(it);
+    it = l.indexOf(4);
+    if(it != nullptr){
+        l.remove(it);
+    }
+    else{
+        cout << "nullptr" << "\n";
+    }
 
 
     it = new L2List::L2Iterator(l);
