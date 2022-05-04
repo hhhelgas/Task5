@@ -13,9 +13,15 @@ HashTable::HashTable() {
 }
 
 HashTable::HashTable(const HashTable& hashTable){
+    buffer = 20;
+    size = 0;
+    arr = new Node[buffer];
+    for(int i = 0; i < buffer; i++) {
+        arr[i].next = nullptr;
+    }
     Node* p;
     for(int i = 0; i < buffer; i++){
-        p = arr[buffer].next;
+        p = hashTable.arr[i].next;
         while (p != nullptr) {
             add(p -> key, p -> value);
             p = p -> next;
@@ -24,6 +30,7 @@ HashTable::HashTable(const HashTable& hashTable){
 }
 
 HashTable::HashTable(HashTable&& hashTable){
+    std::cout << "constr pere\n";
     buffer = hashTable.buffer;
     size = hashTable.size;
     arr = hashTable.arr;

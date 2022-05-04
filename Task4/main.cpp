@@ -18,25 +18,26 @@ int main()
     table.add(44, 40);
     cout << "key 44: " << table.indexOf(44) -> value << endl;
 
-    Iterator it(table);
-    it.start();
-    cout << it.getValue() << " ";
-    while(!it.finish()){
-        it.next();
-        cout << it.getValue() << " ";
+    Iterator* it = new Iterator(table);
+    it -> start();
+    cout << it -> getValue() << " ";
+    while(!it -> finish()){
+        it -> next();
+        cout << it -> getValue() << " ";
     }
     cout << "\n";
 
-    HashTable table_new = HashTable(table);
-    //table_new = table;
+    HashTable table_new;
+    table_new = table;
 
-    Iterator it1(table_new);
-    it1.start();
-    cout << it1.getValue() << " ";
-    while(!it1.finish()){
-        it1.next();
-        cout << it1.getValue() << " ";
+    it = new Iterator(table_new);
+    it -> start();
+    cout << it -> getValue() << " ";
+    while(!it -> finish()){
+        it -> next();
+        cout << it -> getValue() << " ";
     }
+    cout << endl;
 
     cout << "Is empty: " << table.isEmpty() << endl;
     table.empty();

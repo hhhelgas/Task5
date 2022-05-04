@@ -1,4 +1,12 @@
 # depslib dependency file v1.0
-1650949013 source:d:\projects\c++\cprograms\task5\main.cpp
+1651642107 source:d:\projects\c++\cprograms\task5\main.cpp
 	<iostream>
+	"tree.h"
+
+1651640820 source:d:\projects\c++\cprograms\task5\tree.cpp
+	"tree.h"
+
+1651643945 d:\projects\c++\cprograms\task5\tree.h
+	<iostream>
+	<vector>
 
