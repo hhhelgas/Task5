@@ -5,10 +5,11 @@ using namespace std;
 int main()
 {
     Tree tree;
-    int size = 1;
+    int size = 0;
     int* path = new int[size];
-
-    tree.add(1);
+    tree.add(1, path, 0);
+    size = 1;
+    path = new int[size];
     path[0] = 0;
     tree.add(2, path, size);
     path[0] = 1;
@@ -25,12 +26,11 @@ int main()
     cout << tree.isAllPositive() << endl;
     tree.add(-6, path, size);
     cout << tree.isAllPositive() << endl;
-    //tree.deleteLeaves();
+    tree.deleteLeaves();
     cout << tree << endl;
     cout << tree.getAverageValue() << endl;
-    vector<int> v = tree.findElem(-6);
+    vector<int> v = tree.findElem(2);
     cout << v.size() << endl;
     cout << v[0] << endl;
-    cout << v[1] << endl;
     return 0;
 }

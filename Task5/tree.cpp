@@ -15,14 +15,14 @@ Tree::~Tree() {
     removeLeaf(head);
 }
 
-
-void Tree::add(int x){
-    Node* p = new Node(x);
-    head = p;
-}
-
 void Tree::add(int x, int path[], int size){
-    Node* p = head;
+    Node* p;
+    if(size == 0){
+        p = new Node(x);
+        head = p;
+        return;
+    }
+    p = head;
     for(int i = 0; i < size - 1; i++){
         if(p == nullptr){
             throw invalid_argument("invalid path");
@@ -64,7 +64,6 @@ void Tree::deleteLeaves(){
 
 double Tree::getAverageValue() {
     SumAndCount elem = getSumAndCount(head);
-    cout << elem.count << endl;
     return elem.sum /(double) elem.count;
 }
 

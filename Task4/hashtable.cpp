@@ -30,14 +30,12 @@ HashTable::HashTable(const HashTable& hashTable){
 }
 
 HashTable::HashTable(HashTable&& hashTable){
-    std::cout << "constr pere\n";
     buffer = hashTable.buffer;
     size = hashTable.size;
     arr = hashTable.arr;
     hashTable.arr = nullptr;
     hashTable.size = 0;
     hashTable.buffer = 0;
-    //hashTable.empty();
 }
 
 HashTable::~HashTable() {
@@ -54,7 +52,6 @@ void HashTable::add(int key, int value) {
     while (p -> next != nullptr) {
         p = p -> next;
         if(p -> key == key) {
-            //throw invalid_argument("key already exist");
             p -> value = value;
         }
     }

@@ -28,7 +28,7 @@ int main()
     cout << "\n";
 
     HashTable table_new;
-    table_new = table;
+    table_new = HashTable(table);
 
     it = new Iterator(table_new);
     it -> start();

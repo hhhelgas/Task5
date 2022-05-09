@@ -21,11 +21,6 @@ struct Node{
         this -> left = left;
         this -> right = right;
     }
-    /*~Node(){
-        left = nullptr;
-        right = nullptr;
-        value = 0;
-    }*/
 };
 
 struct SumAndCount{
@@ -132,7 +127,6 @@ public:
     Tree();
     Tree(const Tree&);
     ~Tree();
-    void add(int);
     void add(int, int*, int);
     int countEven();
     bool isAllPositive();
