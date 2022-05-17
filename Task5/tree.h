@@ -126,6 +126,7 @@ private:
 public:
     Tree();
     Tree(const Tree&);
+    Tree(Tree&&);
     ~Tree();
     void add(int, int*, int);
     int countEven();
@@ -133,4 +134,21 @@ public:
     void deleteLeaves();
     double getAverageValue();
     std::vector<int> findElem(int x);
+    Tree& operator=(Tree& tree)
+    {
+        if (this != &tree) {
+            Tree local(tree);
+            std::swap(head, local.head);
+            std::swap(length, local.length);
+        }
+        return *this;
+    }
+    Tree& operator=(Tree&& tree)
+    {
+        if (this != &tree) {
+            std::swap(head, tree.head);
+            std::swap(length, tree.length);
+        }
+        return *this;
+    }
 };

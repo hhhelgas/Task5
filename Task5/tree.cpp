@@ -3,12 +3,20 @@
 using namespace std;
 
 Tree::Tree() {
-
+    head = nullptr;
+    length = 0;
 }
 
 Tree::Tree(const Tree& tree) {
     head = copyTree(tree.head);
     length = tree.length;
+}
+
+Tree::Tree(Tree&& tree){
+    head = tree.head;
+    length = tree.length;
+    tree.head = nullptr;
+    tree.length = 0;
 }
 
 Tree::~Tree() {
@@ -34,17 +42,19 @@ void Tree::add(int x, int path[], int size){
         }
 
     }
-    Node* t = new Node(x);
+    Node* t;
     if (path[size - 1]) {
-        if(p -> right != nullptr){
+        if(p -> right != nullptr) {
             p -> right -> value = x;
         } else {
+            t = new Node(x);
             p -> right = t;
         }
     } else if(!path[size - 1]) {
-        if(p -> left != nullptr){
+        if (p -> left != nullptr) {
             p -> left -> value = x;
         }else{
+            t = new Node(x);
             p -> left = t;
         }
     }

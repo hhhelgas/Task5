@@ -7,6 +7,7 @@ class DynamicArray
     private:
         int* arr;
         int length;
+        int buffer;
     public:
         DynamicArray();
         DynamicArray(int);
@@ -15,7 +16,14 @@ class DynamicArray
         DynamicArray(DynamicArray&&);
         virtual ~DynamicArray();
         int getLength() const;
+        void reserve(int);
+        int capacity();
+        void pushBack(int);
+        int popBack();
         int& operator[](int i) const {
+            if(i >= length){
+                throw std::invalid_argument("error index");
+            }
             return arr[i];
         }
         void resize(int);

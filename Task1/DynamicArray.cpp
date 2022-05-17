@@ -50,14 +50,41 @@ int DynamicArray::getLength() const{
 }
 
 void DynamicArray::resize(int n){
+    if (n < length + buffer) {
+        length = n;
+        return;
+    }else if(n < length){
+        buffer = length;
+        length = n;
+    }
     int* new_arr = new int[n];
-    for(int i = 0; i < getLength(); i++){
-        if(i < n){
-
-            new_arr[i] = arr[i];
-        }
+    for (int i = 0; i < getLength(); i++) {
+        new_arr[i] = arr[i];
     }
     delete[] arr;
     arr = new_arr;
     length = n;
+}
+
+void DynamicArray::reserve(int n) {
+    int size = length;
+    buffer = 0;
+    resize(length + n);
+    length = size;
+    buffer = n;
+}
+
+int capacity() {
+    return buffer;
+}
+
+void pushBack(int x){
+    resize(length + 1);
+    arr[length - 1] = x;
+}
+
+int popBack(){
+    int value = arr[length - 1];
+    resize(length - 1);
+    return value;
 }

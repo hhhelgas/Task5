@@ -17,9 +17,9 @@ struct Node{
         }
         return out;
     }
-    Node (char* key, Node* left = nullptr, Node* right = nullptr) {
+    Node (char* key, Node* left = nullptr, Node* right = nullptr, int value = 1) {
         this -> key = key;
-        this -> value = 1;
+        this -> value = value;
         this -> left = left;
         this -> right = right;
     }
@@ -79,6 +79,14 @@ private:
         delete p;
     }
 
+    Node* copyTree(Node* rt){
+        if(!rt){
+            return nullptr;
+        }
+        Node* leaf = new Node(rt -> key, copyTree(rt -> left), copyTree(rt -> right), rt -> value);
+        return leaf;
+    }
+
     int findWord(Node*& root, char* word){
         if(!root){
             return 0;
@@ -104,5 +112,24 @@ public:
     friend std::ostream& operator<< (std::ostream& out, const Tree& tree){
         out << tree.head;
         return out;
+    }
+    Tree& operator=(Tree& tree)
+    {
+        std::cout << "copy=\n";
+        if (this != &tree) {
+            Tree local(tree);
+            std::swap(head, local.head);
+            std::swap(size, local.size);
+        }
+        return *this;
+    }
+    Tree& operator=(Tree&& tree)
+    {
+        std::cout << "pere=\n";
+        if (this != &tree) {
+            std::swap(head, tree.head);
+            std::swap(size, tree.size);
+        }
+        return *this;
     }
 };

@@ -29,5 +29,7 @@ int main()
 
     cout << d_arr << " == " << d_arr4 << ": " << (d_arr == d_arr4) << endl;
 
+
+
     return 0;
 }

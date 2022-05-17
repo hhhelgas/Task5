@@ -9,6 +9,19 @@ Tree::Tree(){
     head = nullptr;
 }
 
+Tree::Tree(const Tree& tree) {
+    std::cout << "copy\n";
+    head = copyTree(tree.head);
+    size = tree.size;
+}
+
+Tree::Tree(Tree&& tree){
+    head = tree.head;
+    size = tree.size;
+    tree.head = nullptr;
+    tree.size = 0;
+}
+
 Tree::~Tree() {
     removeLeaf(head);
 }
@@ -28,14 +41,14 @@ void Tree::add(char* word){
             break;
         } else if (compare > 0) {
             if(!p -> right){
-                std::cout << "add right " << word << " " << p -> key << "\n";
+                //std::cout << "add right " << word << " " << p -> key << "\n";
                 p -> right = new Node(word);
                 break;
             }
             p = p -> right;
         } else {
             if(!p -> left){
-                std::cout << "add left " << word << " " << p -> key << "\n";
+                //std::cout << "add left " << word << " " << p -> key << "\n";
                 p -> left = new Node(word);
                 break;
             }

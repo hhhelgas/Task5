@@ -21,16 +21,21 @@ int main()
     tree.add(5, path, size);
     path[1] = 1;
     tree.add(6, path, size);
+
+
     cout << tree << endl;
     cout << tree.countEven() << endl;
     cout << tree.isAllPositive() << endl;
     tree.add(-6, path, size);
     cout << tree.isAllPositive() << endl;
+
     tree.deleteLeaves();
     cout << tree << endl;
     cout << tree.getAverageValue() << endl;
     vector<int> v = tree.findElem(2);
     cout << v.size() << endl;
     cout << v[0] << endl;
+    Tree new_tree = tree;
+    cout << new_tree;
     return 0;
 }
