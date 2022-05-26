@@ -54,6 +54,28 @@ private:
         delete p;
     }
 
+    void print(Node* node, int tab){
+        std::cout << node -> value << "\n";
+        if(node -> left != nullptr){
+            tab += 4;
+            for(int i = 0; i < tab; i++){
+                std::cout << " ";
+            }
+            print(node -> left, tab);
+            std::cout << "\n";
+            tab -= 4;
+        }
+        if(node -> right != nullptr) {
+            tab += 4;
+            for(int i = 0; i < tab; i++){
+                std::cout << " ";
+            }
+            print(node -> right, tab);
+            std::cout << "\n";
+            tab -= 4;
+        }
+    }
+
     friend std::ostream& operator<< (std::ostream& os, const Tree& tree){
         os << tree.head;
         return os;
@@ -123,6 +145,18 @@ private:
         return 0;
     }
 
+    bool isBinarySearch (Node* p, int mode, int value) {
+        if(!p){
+            return 1;
+        }
+        if(mode == 1){
+            return isBinarySearch(p -> left, 1, p -> value) && isBinarySearch(p -> right, 2, p -> value) && p -> value < value;
+        }else if(mode == 2){
+            return isBinarySearch(p -> left, 1, p -> value) && isBinarySearch(p -> right, 2, p -> value) && p -> value > value;
+        }
+        return isBinarySearch(p -> left, 1, p -> value) && isBinarySearch(p -> right, 2, p -> value);
+    }
+
 public:
     Tree();
     Tree(const Tree&);
@@ -133,6 +167,8 @@ public:
     bool isAllPositive();
     void deleteLeaves();
     double getAverageValue();
+    bool isBinarySearch();
+    void print();
     std::vector<int> findElem(int x);
     Tree& operator=(Tree& tree)
     {

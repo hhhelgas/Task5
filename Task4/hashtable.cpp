@@ -57,6 +57,7 @@ void HashTable::add(int key, int value) {
     }
     p -> next = elem;
     size++;
+    //order.push_back(key);
 }
 
 void HashTable::remove(int key) {
@@ -68,19 +69,29 @@ void HashTable::remove(int key) {
     p -> next = temp -> next;
     delete temp;
     size--;
+    /*int t;
+    for (int i = 0; i < order.size(); i++) {
+        if (order.at(i) == key) {
+            t = order.at(i);
+            order.at(i) = order.at(order.size() - 1);
+            order.at(order.size() - 1) = t;
+            order.pop_back();
+            break;
+        }
+    }*/
 }
 
 Node* HashTable::indexOf(int key) {
     bool isFind = false;
     Node* p = &arr[hashFunc(key)];
-    while(p -> next != nullptr){
+    while (p -> next != nullptr) {
         p = p -> next;
         if(p -> key == key){
             isFind = true;
             break;
         }
     }
-    if(isFind)
+    if (isFind)
         return p;
     return nullptr;
 }
@@ -116,3 +127,8 @@ int HashTable::getLength(){
 int HashTable::getBuffer(){
     return buffer;
 }
+
+vector<int> HashTable::getOrder(){
+    return order;
+}
+

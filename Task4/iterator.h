@@ -9,6 +9,7 @@ private:
     int buffer;
     Node* elem;
     Node* arr;
+    //std::vector<int> order;
 public:
     Iterator(HashTable&);
     void start();

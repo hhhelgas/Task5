@@ -85,3 +85,11 @@ vector<int> Tree::findElem(int x){
     throw invalid_argument("Error, find");
 }
 
+bool Tree::isBinarySearch(){
+    return isBinarySearch(head, 0, head -> value);
+}
+
+void Tree::print(){
+    print(head, 0);
+}
+

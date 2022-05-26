@@ -11,7 +11,7 @@ int main()
     cout << "elem[1]: " << d_arr[1] << endl;
     cout << d_arr << endl;
     cout << "resize" << endl;
-    d_arr.resize(6);
+    d_arr.resize(20);
     cout << d_arr << endl;
 
     DynamicArray d_arr2(2, 10);
@@ -29,7 +29,24 @@ int main()
 
     cout << d_arr << " == " << d_arr4 << ": " << (d_arr == d_arr4) << endl;
 
+    d_arr.reserve(3);
+    cout << d_arr.capacity() << endl;
+    cout << d_arr.getLength() << endl;
 
+    d_arr.resize(8);
+    cout << d_arr.capacity() << endl;
+    cout << d_arr.getLength() << endl;
+
+    cout << d_arr << endl;
+    d_arr.pushBack(9);
+    cout << d_arr.capacity() << endl;
+    cout << d_arr.getLength() << endl;
+
+    cout << d_arr << endl;
+    cout << d_arr.popBack() << endl;
+    cout << d_arr << endl;
+    cout << d_arr.capacity() << endl;
+    cout << d_arr.getLength() << endl;
 
     return 0;
 }

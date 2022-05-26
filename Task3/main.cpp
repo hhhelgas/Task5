@@ -8,6 +8,11 @@ int main()
     L2List l;
     Iterator* it = new L2List::L2Iterator(l);
     it->start();
+    l.add(it, 8);
+    l.add(it, 7);
+    l.add(it, 6);
+    l.add(it, 5);
+    l.add(it, 4);
     l.add(it, 3);
     l.add(it, 2);
     l.add(it, 1);
@@ -25,7 +30,10 @@ int main()
     cout << "\n" << it -> get()->value << "\n";
 
 
-    it = l.indexOf(4);
+    it = l.begin();
+    l.remove(it);
+
+    it = l.indexOf(3);
     if(it != nullptr){
         l.remove(it);
     }

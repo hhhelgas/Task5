@@ -1,13 +1,20 @@
 #pragma once
 #include <iostream>
+#include <vector>
 struct Node{
     int key;
     int value;
     Node* next;
+    Node(int key = 0, int value = 0, Node* next = nullptr){
+        this -> key = key;
+        this -> value = value;
+        this -> next = next;
+    }
 };
 
-class HashTable{
+class HashTable {
 private:
+    //std::vector<int> order;
     Node* arr;
     int buffer;
     int size;
@@ -46,4 +53,5 @@ public:
     Node* getArr();
     int getLength();
     int getBuffer();
+    std::vector<int> getOrder();
 };

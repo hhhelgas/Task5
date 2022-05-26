@@ -4,19 +4,20 @@
 	"hashtable.h"
 	"iterator.h"
 
-1651130038 source:d:\projects\c++\cprograms\task4\hashtable.cpp
+1653534664 source:d:\projects\c++\cprograms\task4\hashtable.cpp
 	"hashtable.h"
 	<iostream>
 
-1652131581 d:\projects\c++\cprograms\task4\hashtable.h
+1653364200 d:\projects\c++\cprograms\task4\hashtable.h
 	<iostream>
+	<vector>
 
-1650860597 source:d:\projects\c++\cprograms\task4\iterator.cpp
+1653368890 source:d:\projects\c++\cprograms\task4\iterator.cpp
 	"iterator.h"
 	"hashtable.h"
 	<iostream>
 
-1651029805 d:\projects\c++\cprograms\task4\iterator.h
+1653534666 d:\projects\c++\cprograms\task4\iterator.h
 	<iostream>
 	"hashtable.h"
 

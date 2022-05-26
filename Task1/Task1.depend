@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1650425879 source:d:\projects\c++\cprograms\task1\main.cpp
+1653215763 source:d:\projects\c++\cprograms\task1\main.cpp
 	<iostream>
 	"DynamicArray.h"
 
-1648536178 source:d:\projects\c++\cprograms\task1\dynamicarray.cpp
+1653375201 source:d:\projects\c++\cprograms\task1\dynamicarray.cpp
 	"DynamicArray.h"
 
-1649219390 d:\projects\c++\cprograms\task1\dynamicarray.h
+1653213086 d:\projects\c++\cprograms\task1\dynamicarray.h
 	<iostream>
 

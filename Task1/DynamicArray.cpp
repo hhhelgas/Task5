@@ -3,12 +3,14 @@
 DynamicArray::DynamicArray()
 {
     length = 0;
+    buffer = 0;
     arr = new int[10];
 }
 
 DynamicArray::DynamicArray(int n)
 {
     length = n;
+    buffer = 0;
     arr = new int[n];
     for(int i = 0; i < n; i++){
         arr[i] = 0;
@@ -17,6 +19,7 @@ DynamicArray::DynamicArray(int n)
 
 DynamicArray::DynamicArray(int n, int v)
 {
+    buffer = 0;
     length = n;
     arr = new int[n];
     for(int i = 0; i < n; i++){
@@ -26,6 +29,7 @@ DynamicArray::DynamicArray(int n, int v)
 
 DynamicArray::DynamicArray(const DynamicArray& d_arr)
 {
+    buffer = d_arr.capacity();
     length = d_arr.getLength();
     arr = new int[d_arr.getLength()];
     for(int i = 0; i < d_arr.getLength(); i++){
@@ -36,8 +40,10 @@ DynamicArray::DynamicArray(const DynamicArray& d_arr)
 DynamicArray::DynamicArray(DynamicArray&& d_arr):arr(nullptr),length(0){
     arr = d_arr.arr;
     length = d_arr.length;
+    buffer = d_arr.buffer;
+    d_arr.buffer = 0;
     d_arr.arr = nullptr;
-    length = 0;
+    d_arr.length = 0;
 }
 
 DynamicArray::~DynamicArray()
@@ -50,16 +56,21 @@ int DynamicArray::getLength() const{
 }
 
 void DynamicArray::resize(int n){
-    if (n < length + buffer) {
+    if (n <= length + buffer) {
+        buffer -= n - length;
         length = n;
         return;
     }else if(n < length){
-        buffer = length;
+        buffer += length - n;
         length = n;
+        return;
     }
     int* new_arr = new int[n];
     for (int i = 0; i < getLength(); i++) {
         new_arr[i] = arr[i];
+    }
+    for (int i = getLength(); i < n; i++) {
+        new_arr[i] = 0;
     }
     delete[] arr;
     arr = new_arr;
@@ -74,16 +85,16 @@ void DynamicArray::reserve(int n) {
     buffer = n;
 }
 
-int capacity() {
+int DynamicArray::capacity() const{
     return buffer;
 }
 
-void pushBack(int x){
+void DynamicArray::pushBack(int x){
     resize(length + 1);
     arr[length - 1] = x;
 }
 
-int popBack(){
+int DynamicArray::popBack(){
     int value = arr[length - 1];
     resize(length - 1);
     return value;

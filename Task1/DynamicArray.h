@@ -17,7 +17,7 @@ class DynamicArray
         virtual ~DynamicArray();
         int getLength() const;
         void reserve(int);
-        int capacity();
+        int capacity() const;
         void pushBack(int);
         int popBack();
         int& operator[](int i) const {
