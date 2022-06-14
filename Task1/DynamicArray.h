@@ -7,27 +7,27 @@ class DynamicArray
     private:
         int* arr;
         int length;
-        int buffer;
+        int buffer;//часть массива, котора€ не видна пользователю,но нужна дл€ расширени€ массива
     public:
         DynamicArray();
-        DynamicArray(int);
-        DynamicArray(int, int);
-        DynamicArray(const DynamicArray&);
-        DynamicArray(DynamicArray&&);
-        virtual ~DynamicArray();
+        DynamicArray(int);//конструктор по длине, все элементы 0
+        DynamicArray(int, int);//конструктор по длине и все элементы равне числу
+        DynamicArray(const DynamicArray&);//конструктор копировани€
+        DynamicArray(DynamicArray&&);//конструктор перемещени€
+        ~DynamicArray();//деструктор
         int getLength() const;
-        void reserve(int);
-        int capacity() const;
-        void pushBack(int);
-        int popBack();
-        int& operator[](int i) const {
+        void reserve(int);//задает буфер
+        int capacity() const;//геттер буфера
+        int popBack();//удал€ет последний элемент
+        void pushBack(int);//добавл€ет последний элемент
+        int& operator[](int i) const /*оператор[] получени€ и изменени€ элемента*/{
             if(i >= length){
                 throw std::invalid_argument("error index");
             }
             return arr[i];
         }
-        void resize(int);
-        DynamicArray& operator=(DynamicArray&& d_arr){
+        void resize(int);//мен€ет длину массива
+        DynamicArray& operator=(DynamicArray&& d_arr)/*оператор перемещени€*/{
             if (this != &d_arr)
             {
                 delete[] arr;
@@ -40,9 +40,12 @@ class DynamicArray
             }
             return *this;
         }
-        DynamicArray operator=(DynamicArray& d_arr){
-            arr = d_arr.arr;
-            length = d_arr.length;
+        DynamicArray& operator=(DynamicArray& d_arr)/*оператор присваивани€*/{
+            if(this != &d_arr){
+                DynamicArray local = DynamicArray(d_arr);
+                std::swap(arr, local.arr);
+                std::swap(length, local.length);
+            }
             return *this;
         }
         friend bool operator== (const DynamicArray &arr1, const DynamicArray &arr2){
@@ -95,7 +98,6 @@ class DynamicArray
                 result[j] = arr2[i];
                 j++;
             }
-            std::cout << std::endl;
             return result;
         }
         friend std::ostream& operator<< (std::ostream& out, const DynamicArray& d_arr){

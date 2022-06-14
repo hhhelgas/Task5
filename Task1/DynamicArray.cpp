@@ -37,7 +37,7 @@ DynamicArray::DynamicArray(const DynamicArray& d_arr)
     }
 }
 
-DynamicArray::DynamicArray(DynamicArray&& d_arr):arr(nullptr),length(0){
+DynamicArray::DynamicArray(DynamicArray&& d_arr){
     arr = d_arr.arr;
     length = d_arr.length;
     buffer = d_arr.buffer;
@@ -55,7 +55,7 @@ int DynamicArray::getLength() const{
     return length;
 }
 
-void DynamicArray::resize(int n){
+void DynamicArray::resize(int n)/*меняет длину без резерва(buffer)*/{
     if (n <= length + buffer) {
         buffer -= n - length;
         length = n;
@@ -77,12 +77,11 @@ void DynamicArray::resize(int n){
     length = n;
 }
 
-void DynamicArray::reserve(int n) {
+void DynamicArray::reserve(int n)/*добавляет к буферу n*/{
     int size = length;
-    buffer = 0;
-    resize(length + n);
+    resize(length + buffer + n);
     length = size;
-    buffer = n;
+    buffer += n;
 }
 
 int DynamicArray::capacity() const{
