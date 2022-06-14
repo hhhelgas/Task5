@@ -6,34 +6,34 @@ using namespace std;
 
 Tree::Tree(){
     size = 0;
-    head = nullptr;
+    root = nullptr;
 }
 
 Tree::Tree(const Tree& tree) {
     std::cout << "copy\n";
-    head = copyTree(tree.head);
+    root = copyTree(tree.root);
     size = tree.size;
 }
 
 Tree::Tree(Tree&& tree){
-    head = tree.head;
+    root = tree.root;
     size = tree.size;
-    tree.head = nullptr;
+    tree.root = nullptr;
     tree.size = 0;
 }
 
 Tree::~Tree() {
-    removeLeaf(head);
+    removeLeaf(root);
 }
 
 void Tree::add(char* word){
     size++;
-    if(!head){
-        head = new Node(word);
+    if(!root){
+        root = new Node(word);
 
         return;
     }
-    Node* p = head;
+    Node* p = root;
     while(p){
         int compare = strcmp(word, p -> key);
         if (compare == 0) {
@@ -58,7 +58,7 @@ void Tree::add(char* word){
 }
 
 void Tree::remove(char* word){
-    deleteElem(head, word);
+    deleteElem(root, word);
     size--;
 }
 
@@ -67,11 +67,11 @@ int Tree::countWords(){
 }
 
 int Tree::findWord(char* word){
-    return findWord(head, word);
+    return findWord(root, word);
 }
 /*void Tree::remove(char* word){
-    Node* p = head;
-    Node* prev = head;
+    Node* p = root;
+    Node* prev = root;
     bool found = true;
     while(p) {
         int compare = strcmp(word, p -> key);

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstring>
 
-struct Node{
+struct Node {
     char* key;
     int value;
     Node* left;
@@ -27,7 +27,7 @@ struct Node{
 
 class Tree {
 private:
-    Node* head;
+    Node* root;
     int size;
     bool deleteElem(Node*& root, char* word) {
         if (!root) {
@@ -110,7 +110,7 @@ public:
     int countWords();
     int findWord(char*);
     friend std::ostream& operator<< (std::ostream& out, const Tree& tree){
-        out << tree.head;
+        out << tree.root;
         return out;
     }
     Tree& operator=(Tree& tree)
@@ -118,7 +118,7 @@ public:
         std::cout << "copy=\n";
         if (this != &tree) {
             Tree local(tree);
-            std::swap(head, local.head);
+            std::swap(root, local.root);
             std::swap(size, local.size);
         }
         return *this;
@@ -127,7 +127,7 @@ public:
     {
         std::cout << "pere=\n";
         if (this != &tree) {
-            std::swap(head, tree.head);
+            std::swap(root, tree.root);
             std::swap(size, tree.size);
         }
         return *this;
